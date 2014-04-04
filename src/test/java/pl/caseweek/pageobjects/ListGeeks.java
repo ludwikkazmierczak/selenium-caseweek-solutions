@@ -49,7 +49,7 @@ public class ListGeeks extends LoadableComponent<ListGeeks> {
 	public LGSingleListPage openList(int index) {
 		lists.get(index).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.page-lst")));
-		return new LGSingleListPage();
+		return new LGSingleListPage(driver);
 	}
 
 

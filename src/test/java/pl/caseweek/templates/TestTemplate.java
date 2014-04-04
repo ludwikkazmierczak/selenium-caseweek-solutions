@@ -3,7 +3,6 @@ package pl.caseweek.templates;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -14,8 +13,8 @@ public class TestTemplate {
 	@BeforeMethod
 	public void setUp() {
 		driver = DriverFactory.getDriver("FF");
-		Assert.assertNotNull(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 	}
 
 	@AfterMethod(alwaysRun = true)

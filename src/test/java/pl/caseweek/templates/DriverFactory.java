@@ -20,7 +20,7 @@ public class DriverFactory {
 			System.setProperty("webdriver.chrome.driver", "??");
 			return new ChromeDriver();
 		}
-		return null;
+		throw new RuntimeException("Specified browser is not supported. Please use one of the following: FF, IE, Chrome.");
 	}
 
 }
