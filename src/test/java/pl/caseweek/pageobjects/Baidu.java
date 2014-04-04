@@ -1,14 +1,15 @@
 package pl.caseweek.pageobjects;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
+import pl.caseweek.data.Titles;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Baidu extends LoadableComponent<Baidu> {
 	WebDriver driver;
@@ -45,7 +46,7 @@ public class Baidu extends LoadableComponent<Baidu> {
 
 	@Override
 	protected void isLoaded() throws Error {
-		Assert.assertEquals(driver.getTitle(), expectedTitle);
+		Assert.assertEquals(driver.getTitle(), Titles.BAIDU);
 	}
 
 	public Baidu(WebDriver driver) {

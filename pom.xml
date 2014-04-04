@@ -70,7 +70,7 @@
 						<browser>FF</browser>
 					</systemPropertyVariables>
 					<suiteXmlFiles>
-						<suiteXmlFile>src/test/java/pl/caseweek/testsuites/${testSuite}.xml</suiteXmlFile>
+						<suiteXmlFile>src/test/java/pl/caseweek/testsuites/example.xml</suiteXmlFile>
 					</suiteXmlFiles>					
 					<workingDirectory>target/</workingDirectory>
 				</configuration>
