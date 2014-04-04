@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="example-caseweek-testsuite">
+	<test name="dev" time-out = "3600000">
+		<classes>
+            <class name="pl.caseweek.testcases.SearchEngines" />
+        </classes>
+    </test>
+</suite>
