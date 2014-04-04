@@ -1,5 +1,7 @@
 package pl.caseweek.pageobjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,6 +28,9 @@ public class ListGeeks extends LoadableComponent<ListGeeks> {
 	@FindBy(xpath = navigationXpath + "//a[text()='Home']")
 	public WebElement homeLink;
 
+	@FindBy(css = "article.lst h1 > a")
+	List<WebElement> lists;
+
 
 	public ListGeeks goToBrowseLists() {
 		browseListsLink.click();
@@ -40,6 +45,12 @@ public class ListGeeks extends LoadableComponent<ListGeeks> {
 		return this;
 	}
 
+
+	public LGSingleListPage openList(int index) {
+		lists.get(index).click();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.page-lst")));
+		return new LGSingleListPage();
+	}
 
 
 	@Override
@@ -57,12 +68,4 @@ public class ListGeeks extends LoadableComponent<ListGeeks> {
 		this.wait = new WebDriverWait(driver, 10);
 		PageFactory.initElements(driver, this);
 	}
-
-
-
-
-
-
-
-
 }
