@@ -1,25 +1,28 @@
-package pl.caseweek.pageobjects;
+package pl.caseweek.pageobjects.listgeeks;
 
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LGSingleListPage {
+public class SingleListPage {
 	private WebDriver driver;
+
+	public Navigation mainMenu;
+
+	@FindBy(css = ".ui-sortable > li")
+	private List<WebElement> listItems;
 
 	public static final String itemXpathPattern = "//li[div[@class='pos']/input[@value='%s']]";
 
-	public LGListElement getListItem(int itemIndex) {
-		String xpath = String.format(itemXpathPattern, itemIndex);
-		WebElement listItem = driver.findElement(By.xpath(xpath));
-		return new LGListElement(driver, listItem);
+	public ListGeeks getListItem(int itemIndex) {
+		return new ListGeeks(driver, listItems.get(itemIndex));
 	}
-
 
 	public List<WebElement> getAutocompleteItems() {
 		String autoCmpltCss =  "ul.ui-autocomplete[style*='display: block'] li.ui-menu-item a";
@@ -34,19 +37,17 @@ public class LGSingleListPage {
 
 	public boolean autocompleteContains(String expectedToSeeInAutocomplete) {
 		List<WebElement> autocompleteItems = getAutocompleteItems();
-		boolean passed = false;
 		for (WebElement autoCmpltItem : autocompleteItems) {
 			if (expectedToSeeInAutocomplete.equals(autoCmpltItem.getText())) {
-				passed = true;
-				break;
+				return true;
 			}
 		}
-		return passed;
+		return false;
 	}
 
-
-	public LGSingleListPage(WebDriver driver) {
+	public SingleListPage(WebDriver driver) {
 		this.driver = driver;
+		mainMenu = new Navigation(driver);
 		PageFactory.initElements(driver, this);
 	}
 
