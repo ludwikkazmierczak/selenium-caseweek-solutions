@@ -10,9 +10,9 @@ import pl.caseweek.templates.TestTemplate;
 /**
  * Created by Ludwik on 05.04.14.
  */
-public class AddURL extends TestTemplate{
+public class ChangeOrder extends TestTemplate{
 
-private SingleListPage singleListPage;
+	private SingleListPage singleListPage;
 
 	private HomePage homePage;
 
@@ -22,28 +22,26 @@ private SingleListPage singleListPage;
 	}
 
 	@Test
-	public void addURL() {
+	public void changeOrder() {
 
 		singleListPage = homePage.get().mainMenu.goToLatestListsPage().openList(1);
 
 		singleListPage.getListItem(0).typeTitle("First");
-		singleListPage.getListItem(0).typeLink("FirstLink");
 
-		Assert.assertTrue(singleListPage.getListItem(0).getUrl().equals("FirstLink"));
+		Assert.assertTrue(singleListPage.getListItem(0).getTitle().equals("First"));
 		Assert.assertTrue(singleListPage.getListItem(0).isLinkVisible());
 
 		singleListPage.getListItem(1).typeTitle("Second");
-		singleListPage.getListItem(1).typeLink("SecondLink");
 
-		Assert.assertTrue(singleListPage.getListItem(1).getUrl().equals("SecondLink"));
+		Assert.assertTrue(singleListPage.getListItem(1).getTitle().equals("Second"));
 		Assert.assertTrue(singleListPage.getListItem(1).isLinkVisible());
 
-		singleListPage.getListItem(0).typeLink("Edited");
+		singleListPage.changeOrder(singleListPage.getListItem(0).getDraggablePart(), singleListPage.getListItem(1).getDropArea());
 
-		Assert.assertTrue(singleListPage.getListItem(0).getUrl().equals("FirstLinkEdited"));
+		Assert.assertTrue(singleListPage.getListItem(0).getTitle().equals("Second"));
+		Assert.assertTrue(singleListPage.getListItem(0).isLinkVisible());
 
-		singleListPage.getListItem(1).toggleLinks();
-
-		Assert.assertFalse(singleListPage.getListItem(1).isLinkVisible());
+		Assert.assertTrue(singleListPage.getListItem(1).getTitle().equals("First"));
+		Assert.assertTrue(singleListPage.getListItem(1).isLinkVisible());
 	}
 }

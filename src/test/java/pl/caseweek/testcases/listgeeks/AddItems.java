@@ -1,6 +1,7 @@
 package pl.caseweek.testcases.listgeeks;
 
 import junit.framework.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.caseweek.pageobjects.listgeeks.HomePage;
 import pl.caseweek.pageobjects.listgeeks.SingleListPage;
@@ -13,10 +14,15 @@ public class AddItems  extends TestTemplate {
 
 	private SingleListPage singleListPage;
 
+	private HomePage homePage;
+
+	@BeforeMethod
+	public void init(){
+		homePage = new HomePage(driver);
+	}
+
 	@Test
 	public void addList() {
-		HomePage homePage = new HomePage(driver);
-
 		singleListPage = homePage.get().mainMenu.goToLatestListsPage().openList(1);
 
 		singleListPage.getListItem(0).typeTitle("First");

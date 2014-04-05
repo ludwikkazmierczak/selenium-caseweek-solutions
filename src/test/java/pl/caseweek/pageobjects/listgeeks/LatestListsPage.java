@@ -17,6 +17,8 @@ public class LatestListsPage {
 	private WebDriver driver;
 	private WebDriverWait wait;
 
+	public Navigation mainMenu;
+
 	@FindBy(css = "article.lst h1 > a")
 	private List<WebElement> lists;
 
@@ -29,6 +31,7 @@ public class LatestListsPage {
 	public LatestListsPage(WebDriver driver){
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 10);
+		this.mainMenu = new Navigation(driver);
 		PageFactory.initElements(driver, this);
 	}
 }

@@ -1,10 +1,15 @@
 package pl.caseweek.pageobjects.listgeeks;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class ListGeeks {
 	private WebDriver driver;
@@ -24,6 +29,9 @@ public class ListGeeks {
 
 	@FindBy(css = "a.toggle-details")
 	private WebElement toggleButton;
+
+	@FindBy(css = "span.position")
+	private WebElement dragablePart;
 
 	public void remove() {
 		removeButton.click();
@@ -53,6 +61,33 @@ public class ListGeeks {
 		return urlField.isDisplayed();
 	}
 
+	public WebElement getDraggablePart(){
+		return dragablePart;
+	}
+
+	public WebElement getDropArea(){
+		return urlField;
+	}
+	public List<WebElement> getAutocompleteItems() {
+		String autoCmpltCss =  "ul.ui-autocomplete[style*='display: block'] li.ui-menu-item a";
+
+		//wait below is actually useless since we are already using implicit waits (defined in TestTemplate)
+		//it just demonstrates one of the possible techinques
+		List<WebElement> autocompleteItems =
+				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(autoCmpltCss)));
+
+		return autocompleteItems;
+	}
+
+	public boolean autocompleteContains(String expectedToSeeInAutocomplete) {
+		List<WebElement> autocompleteItems = getAutocompleteItems();
+		for (WebElement autoCmpltItem : autocompleteItems) {
+			if (expectedToSeeInAutocomplete.equals(autoCmpltItem.getText())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public ListGeeks(WebDriver driver, WebElement element) {
 		this.item = element;
