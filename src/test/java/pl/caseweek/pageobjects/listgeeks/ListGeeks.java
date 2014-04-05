@@ -42,11 +42,15 @@ public class ListGeeks {
 	}
 
 	public String getTitle() {
-		return titleField.getText();
+		return titleField.getAttribute("value");
 	}
 
 	public String getUrl() {
-		return urlField.getText();
+		return urlField.getAttribute("value");
+	}
+
+	public boolean isLinkVisible(){
+		return urlField.isDisplayed();
 	}
 
 
