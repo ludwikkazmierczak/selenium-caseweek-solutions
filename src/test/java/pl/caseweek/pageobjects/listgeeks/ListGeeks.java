@@ -1,4 +1,4 @@
-package pl.caseweek.pageobjects;
+package pl.caseweek.pageobjects.listgeeks;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,12 +6,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 
-public class LGListElement {
+public class ListGeeks {
 	private WebDriver driver;
 	private WebElement item;
 
 	@FindBy(css = "h3 > input")
 	private WebElement titleField;
+
+	@FindBy(css = "div.links > h3 > input")
+	private WebElement firstEmptyItem;
 
 	@FindBy(css = "div.links > input")
 	private WebElement urlField;
@@ -47,7 +50,7 @@ public class LGListElement {
 	}
 
 
-	public LGListElement(WebDriver driver, WebElement element) {
+	public ListGeeks(WebDriver driver, WebElement element) {
 		this.item = element;
 		this.driver = driver;
 		PageFactory.initElements(new DefaultElementLocatorFactory(element), this);
