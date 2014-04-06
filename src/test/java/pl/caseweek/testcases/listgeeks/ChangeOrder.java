@@ -1,9 +1,12 @@
 package pl.caseweek.testcases.listgeeks;
 
 import junit.framework.Assert;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import pl.caseweek.pageobjects.listgeeks.HomePage;
+import pl.caseweek.pageobjects.listgeeks.ListGeeksElement;
 import pl.caseweek.pageobjects.listgeeks.SingleListPage;
 import pl.caseweek.templates.TestTemplate;
 
@@ -26,22 +29,26 @@ public class ChangeOrder extends TestTemplate{
 
 		singleListPage = homePage.get().mainMenu.goToLatestListsPage().openList(1);
 
-		singleListPage.getListItem(0).typeTitle("First");
+		ListGeeksElement firstElement = singleListPage.getListItem(0);
+		ListGeeksElement secondElement = singleListPage.getListItem(1);
 
-		Assert.assertTrue(singleListPage.getListItem(0).getTitle().equals("First"));
-		Assert.assertTrue(singleListPage.getListItem(0).isLinkVisible());
 
-		singleListPage.getListItem(1).typeTitle("Second");
+		firstElement.typeTitle("First");
 
-		Assert.assertTrue(singleListPage.getListItem(1).getTitle().equals("Second"));
-		Assert.assertTrue(singleListPage.getListItem(1).isLinkVisible());
+		Assert.assertTrue(firstElement.getTitle().equals("First"));
+		Assert.assertTrue(firstElement.isLinkVisible());
 
-		singleListPage.changeOrder(singleListPage.getListItem(0).getDragablePart(), singleListPage.getListItem(1).getElementToDropOn());
+		secondElement.typeTitle("Second");
 
-		Assert.assertTrue(singleListPage.getListItem(0).getTitle().equals("Second"));
-		Assert.assertTrue(singleListPage.getListItem(0).isLinkVisible());
+		Assert.assertTrue(secondElement.getTitle().equals("Second"));
+		Assert.assertTrue(secondElement.isLinkVisible());
 
-		Assert.assertTrue(singleListPage.getListItem(1).getTitle().equals("First"));
-		Assert.assertTrue(singleListPage.getListItem(1).isLinkVisible());
+		singleListPage.changeOrder(firstElement.getDragablePart(), secondElement.getElementToDropOn());
+
+		Assert.assertTrue(firstElement.getTitle().equals("Second"));
+		Assert.assertTrue(firstElement.isLinkVisible());
+
+		Assert.assertTrue(secondElement.getTitle().equals("First"));
+		Assert.assertTrue(secondElement.isLinkVisible());
 	}
 }

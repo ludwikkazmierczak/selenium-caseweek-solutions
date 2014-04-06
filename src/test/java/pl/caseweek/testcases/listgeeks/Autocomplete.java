@@ -1,8 +1,10 @@
 package pl.caseweek.testcases.listgeeks;
 
 import junit.framework.Assert;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import pl.caseweek.pageobjects.listgeeks.HomePage;
 import pl.caseweek.pageobjects.listgeeks.SingleListPage;
 import pl.caseweek.templates.TestTemplate;
@@ -11,8 +13,6 @@ import pl.caseweek.templates.TestTemplate;
  * Created by Ludwik on 05.04.14.
  */
 public class Autocomplete extends TestTemplate {
-
-	private SingleListPage singleListPage;
 
 	private HomePage homePage;
 
@@ -25,7 +25,7 @@ public class Autocomplete extends TestTemplate {
 	}
 
 	@Test
-	public void autocomplete() throws Exception {
+	public void autocomplete() {
 
 		SingleListPage singleListPage = homePage //
 				.get() //
@@ -34,8 +34,8 @@ public class Autocomplete extends TestTemplate {
 				.openList(1);
 
 		singleListPage //
-				.getListItem(0) //
-				.typeTitle(TITLE);
+		.getListItem(0) //
+		.typeTitle(TITLE);
 
 		Assert.assertTrue(singleListPage.getListItem(0).autocompleteContains(EXPECTED_TO_SEE_IN_AUTOCOMPLETE));
 	}

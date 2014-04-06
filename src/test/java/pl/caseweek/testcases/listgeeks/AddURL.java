@@ -1,9 +1,12 @@
 package pl.caseweek.testcases.listgeeks;
 
 import junit.framework.Assert;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import pl.caseweek.pageobjects.listgeeks.HomePage;
+import pl.caseweek.pageobjects.listgeeks.ListGeeksElement;
 import pl.caseweek.pageobjects.listgeeks.SingleListPage;
 import pl.caseweek.templates.TestTemplate;
 
@@ -12,7 +15,7 @@ import pl.caseweek.templates.TestTemplate;
  */
 public class AddURL extends TestTemplate{
 
-private SingleListPage singleListPage;
+	private SingleListPage singleListPage;
 
 	private HomePage homePage;
 
@@ -26,24 +29,25 @@ private SingleListPage singleListPage;
 
 		singleListPage = homePage.get().mainMenu.goToLatestListsPage().openList(1);
 
-		singleListPage.getListItem(0).typeTitle("First");
-		singleListPage.getListItem(0).typeLink("FirstLin" +
-				"k");
-		singleListPage.getListItem(1).typeTitle("Second");
-		singleListPage.getListItem(1).typeLink("SecondLink");
+		ListGeeksElement firstElement = singleListPage.getListItem(0);
+		ListGeeksElement secondElement = singleListPage.getListItem(1);
 
-		Assert.assertTrue(singleListPage.getListItem(0).getUrl().equals("FirstLink"));
-		Assert.assertTrue(singleListPage.getListItem(0).isLinkVisible());
+		firstElement.typeTitle("First").typeLink("FirstLink");
+		secondElement.typeLink("Second").typeLink("Second link");
 
-		Assert.assertTrue(singleListPage.getListItem(1).getUrl().equals("SecondLink"));
-		Assert.assertTrue(singleListPage.getListItem(1).isLinkVisible());
 
-		singleListPage.getListItem(0).typeLink("Edited");
+		Assert.assertTrue(firstElement.getUrl().equals("FirstLink"));
+		Assert.assertTrue(firstElement.isLinkVisible());
 
-		Assert.assertTrue(singleListPage.getListItem(0).getUrl().equals("FirstLinkEdited"));
+		Assert.assertTrue(secondElement.getUrl().equals("SecondLink"));
+		Assert.assertTrue(secondElement.isLinkVisible());
 
-		singleListPage.getListItem(1).toggleLinks();
+		firstElement.typeLink("Edited");
 
-		Assert.assertFalse(singleListPage.getListItem(1).isLinkVisible());
+		Assert.assertTrue(firstElement.getUrl().equals("FirstLinkEdited"));
+
+		secondElement.toggleLinks();
+
+		Assert.assertFalse(secondElement.isLinkVisible());
 	}
 }

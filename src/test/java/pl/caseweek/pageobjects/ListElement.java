@@ -1,6 +1,5 @@
 package pl.caseweek.pageobjects;
 
-import org.openqa.selenium.WebElement;
 
 /**
  * This interface connected with single list element functionality, prepared for CaseWeek 2014 Selenium workshop
@@ -48,14 +47,14 @@ public interface ListElement {
 
 	/**
 	 * Check if 'link' input field is visible
-	 * @return true if link input is visible, false if invisible
+	 * @return true if link input is visible, false otherwise
 	 */
 	public boolean isLinkVisible();
 
 	/**
 	 * Check if an expected text is shown in autocomplete box
-	 * @param expectedToSeeInAutocomplete - value expected to be in autocomplete box
-	 * @return true if expected text is visible in autocomple box, fale if NOT
+	 * @param expectedToSeeInAutocomplete - value expected to be present in autocomplete box
+	 * @return true if expected text is visible in autocomplete box, false if NOT
 	 */
 	public boolean autocompleteContains(String expectedToSeeInAutocomplete);
 }
