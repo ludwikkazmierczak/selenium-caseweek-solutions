@@ -32,23 +32,12 @@ public class ChangeOrder extends TestTemplate{
 		ListGeeksElement firstElement = singleListPage.getListItem(0);
 		ListGeeksElement secondElement = singleListPage.getListItem(1);
 
-
 		firstElement.typeTitle("First");
-
-		Assert.assertTrue(firstElement.getTitle().equals("First"));
-		Assert.assertTrue(firstElement.isLinkVisible());
-
 		secondElement.typeTitle("Second");
-
-		Assert.assertTrue(secondElement.getTitle().equals("Second"));
-		Assert.assertTrue(secondElement.isLinkVisible());
 
 		singleListPage.changeOrder(firstElement.getDragablePart(), secondElement.getElementToDropOn());
 
 		Assert.assertTrue(firstElement.getTitle().equals("Second"));
-		Assert.assertTrue(firstElement.isLinkVisible());
-
 		Assert.assertTrue(secondElement.getTitle().equals("First"));
-		Assert.assertTrue(secondElement.isLinkVisible());
 	}
 }
