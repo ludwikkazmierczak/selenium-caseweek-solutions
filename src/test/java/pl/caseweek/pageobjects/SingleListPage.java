@@ -13,7 +13,7 @@ public interface SingleListPage {
 	 * @param itemIndex - index of an element you want to get
 	 * @return ListElement
 	 */
-	public ListGeeksElement getListItem(int itemIndex);
+	public <L extends ListElement> L getListItem(int itemIndex);
 
 	/**
 	 * Change order of the list by dragging one element over the second area
