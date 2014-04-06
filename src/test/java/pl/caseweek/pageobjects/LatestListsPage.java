@@ -1,7 +1,5 @@
 package pl.caseweek.pageobjects;
 
-import pl.caseweek.pageobjects.listgeeks.SingleListPage;
-
 /**
  * This interface connected with 'latest lists' page functionality, prepared for CaseWeek 2014 Selenium workshop
  * Created by Ludwik and Yaci
