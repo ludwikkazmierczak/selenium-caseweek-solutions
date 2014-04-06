@@ -9,8 +9,6 @@ import pl.caseweek.templates.TestTemplate;
 
 public class ListGeeksBasic extends TestTemplate{
 
-	private SingleListPage singleListPage;
-
 	private HomePage homePage;
 
 	@BeforeMethod
@@ -26,8 +24,6 @@ public class ListGeeksBasic extends TestTemplate{
 				.goToLatestListsPage() //
 				.mainMenu //
 				.goToHomePage();
-
-
 	}
 
 	@Test

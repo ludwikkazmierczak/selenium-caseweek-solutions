@@ -26,8 +26,16 @@ public class Autocomplete extends TestTemplate {
 
 	@Test
 	public void autocomplete() throws Exception {
-		SingleListPage singleListPage = homePage.get().mainMenu.goToLatestListsPage().openList(1);
-		singleListPage.getListItem(0).typeTitle(TITLE);
+
+		SingleListPage singleListPage = homePage //
+				.get() //
+				.mainMenu //
+				.goToLatestListsPage() //
+				.openList(1);
+
+		singleListPage //
+				.getListItem(0) //
+				.typeTitle(TITLE);
 
 		Assert.assertTrue(singleListPage.getListItem(0).autocompleteContains(EXPECTED_TO_SEE_IN_AUTOCOMPLETE));
 	}

@@ -36,7 +36,7 @@ public class ChangeOrder extends TestTemplate{
 		Assert.assertTrue(singleListPage.getListItem(1).getTitle().equals("Second"));
 		Assert.assertTrue(singleListPage.getListItem(1).isLinkVisible());
 
-		singleListPage.changeOrder(singleListPage.getListItem(0).getDraggablePart(), singleListPage.getListItem(1).getDropArea());
+		singleListPage.changeOrder(singleListPage.getListItem(0).getDragablePart(), singleListPage.getListItem(1).getElementToDropOn());
 
 		Assert.assertTrue(singleListPage.getListItem(0).getTitle().equals("Second"));
 		Assert.assertTrue(singleListPage.getListItem(0).isLinkVisible());

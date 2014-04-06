@@ -27,13 +27,13 @@ private SingleListPage singleListPage;
 		singleListPage = homePage.get().mainMenu.goToLatestListsPage().openList(1);
 
 		singleListPage.getListItem(0).typeTitle("First");
-		singleListPage.getListItem(0).typeLink("FirstLink");
+		singleListPage.getListItem(0).typeLink("FirstLin" +
+				"k");
+		singleListPage.getListItem(1).typeTitle("Second");
+		singleListPage.getListItem(1).typeLink("SecondLink");
 
 		Assert.assertTrue(singleListPage.getListItem(0).getUrl().equals("FirstLink"));
 		Assert.assertTrue(singleListPage.getListItem(0).isLinkVisible());
-
-		singleListPage.getListItem(1).typeTitle("Second");
-		singleListPage.getListItem(1).typeLink("SecondLink");
 
 		Assert.assertTrue(singleListPage.getListItem(1).getUrl().equals("SecondLink"));
 		Assert.assertTrue(singleListPage.getListItem(1).isLinkVisible());

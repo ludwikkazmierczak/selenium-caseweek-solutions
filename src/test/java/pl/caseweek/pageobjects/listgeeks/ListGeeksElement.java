@@ -8,10 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pl.caseweek.pageobjects.ListElement;
 
 import java.util.List;
 
-public class ListGeeks {
+public class ListGeeksElement implements ListElement{
 	private WebDriver driver;
 	private WebElement item;
 
@@ -33,20 +34,24 @@ public class ListGeeks {
 	@FindBy(css = "span.position")
 	private WebElement dragablePart;
 
-	public void remove() {
+	public ListGeeksElement remove() {
 		removeButton.click();
+		return this;
 	}
 
-	public void toggleLinks() {
+	public ListGeeksElement toggleLinks() {
 		toggleButton.click();
+		return this;
 	}
 
-	public void typeTitle(String title) {
+	public ListGeeksElement typeTitle(String title) {
 		titleField.sendKeys(title);
+		return this;
 	}
 
-	public void typeLink(String url) {
+	public ListGeeksElement typeLink(String url) {
 		urlField.sendKeys(url);
+		return this;
 	}
 
 	public String getTitle() {
@@ -61,14 +66,15 @@ public class ListGeeks {
 		return urlField.isDisplayed();
 	}
 
-	public WebElement getDraggablePart(){
+	public WebElement getDragablePart(){
 		return dragablePart;
 	}
 
-	public WebElement getDropArea(){
+	public WebElement getElementToDropOn(){
 		return urlField;
 	}
-	public List<WebElement> getAutocompleteItems() {
+
+	private List<WebElement> getAutocompleteItems() {
 		String autoCmpltCss =  "ul.ui-autocomplete[style*='display: block'] li.ui-menu-item a";
 
 		//wait below is actually useless since we are already using implicit waits (defined in TestTemplate)
@@ -89,7 +95,7 @@ public class ListGeeks {
 		return false;
 	}
 
-	public ListGeeks(WebDriver driver, WebElement element) {
+	public ListGeeksElement(WebDriver driver, WebElement element) {
 		this.item = element;
 		this.driver = driver;
 		PageFactory.initElements(new DefaultElementLocatorFactory(element), this);

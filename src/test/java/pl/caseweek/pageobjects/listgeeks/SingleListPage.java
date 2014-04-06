@@ -2,16 +2,11 @@ package pl.caseweek.pageobjects.listgeeks;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import javax.swing.*;
 
 public class SingleListPage {
 	private WebDriver driver;
@@ -23,8 +18,8 @@ public class SingleListPage {
 
 	public static final String itemXpathPattern = "//li[div[@class='pos']/input[@value='%s']]";
 
-	public ListGeeks getListItem(int itemIndex) {
-		return new ListGeeks(driver, listItems.get(itemIndex));
+	public ListGeeksElement getListItem(int itemIndex) {
+		return new ListGeeksElement(driver, listItems.get(itemIndex));
 	}
 
 	public void changeOrder(WebElement first, WebElement second){

@@ -1,12 +1,12 @@
 package pl.caseweek.pageobjects;
 
-import pl.caseweek.pageobjects.listgeeks.ListGeeks;
+import pl.caseweek.pageobjects.listgeeks.ListGeeksElement;
 
 /**
  * Created by Ludwik on 05.04.14.
  */
 public interface SingleListPage {
 
-	public ListGeeks getListItem(int itemIndex);
+	public ListGeeksElement getListItem(int itemIndex);
 
 }

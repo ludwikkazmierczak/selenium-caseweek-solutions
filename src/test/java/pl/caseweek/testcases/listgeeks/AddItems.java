@@ -26,11 +26,9 @@ public class AddItems  extends TestTemplate {
 		singleListPage = homePage.get().mainMenu.goToLatestListsPage().openList(1);
 
 		singleListPage.getListItem(0).typeTitle("First");
-
-		Assert.assertTrue(singleListPage.getListItem(0).getTitle().equals("First"));
-
 		singleListPage.getListItem(1).typeTitle("Second");
 
+		Assert.assertTrue(singleListPage.getListItem(0).getTitle().equals("First"));
 		Assert.assertTrue(singleListPage.getListItem(1).getTitle().equals("Second"));
 
 		singleListPage.getListItem(0).typeTitle("Edited");
