@@ -9,9 +9,6 @@ import pl.caseweek.pageobjects.listgeeks.HomePage;
 import pl.caseweek.pageobjects.listgeeks.SingleListPage;
 import pl.caseweek.templates.TestTemplate;
 
-/**
- * Created by Ludwik on 05.04.14.
- */
 public class Autocomplete extends TestTemplate {
 
 	private HomePage homePage;

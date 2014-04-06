@@ -5,7 +5,7 @@ import pl.caseweek.pageobjects.listgeeks.ListGeeksElement;
 
 /**
  * This interface connected with 'single list' page functionality, prepared for CaseWeek 2014 Selenium workshop
- * Created by Ludwik on 05.04.14.
+ * Created by Ludwik and Yaci
  */
 public interface SingleListPage {
 	/**

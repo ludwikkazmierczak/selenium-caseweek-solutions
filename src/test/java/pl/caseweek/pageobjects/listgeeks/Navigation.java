@@ -8,9 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-/**
- * Created by Ludwik on 05.04.14.
- */
 public class Navigation implements pl.caseweek.pageobjects.Navigation{
 	private WebDriver driver;
 	private WebDriverWait wait;

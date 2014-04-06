@@ -24,9 +24,10 @@ public class Baidu extends LoadableComponent<Baidu> implements SearchEngine {
 	@FindBy(xpath="//div[contains(@class, 'result')]/h3/a")
 	private List<WebElement> searchHeadings;
 
-	public void search(String searchTerm) {
+	public Baidu search(String searchTerm) {
 		searchBox.sendKeys(searchTerm);
 		searchButton.click();
+		return this;
 	}
 
 	public List<String> getSearchHeadings() {

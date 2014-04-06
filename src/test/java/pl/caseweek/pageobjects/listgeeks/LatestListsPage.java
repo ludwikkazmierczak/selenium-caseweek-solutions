@@ -10,9 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-/**
- * Created by Ludwik on 05.04.14.
- */
 public class LatestListsPage {
 	private WebDriver driver;
 	private WebDriverWait wait;
@@ -28,7 +25,7 @@ public class LatestListsPage {
 		return new SingleListPage(driver);
 	}
 
-	public LatestListsPage(WebDriver driver){
+	public LatestListsPage(WebDriver driver) {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, 10);
 		this.mainMenu = new Navigation(driver);
