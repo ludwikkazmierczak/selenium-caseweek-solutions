@@ -1,4 +1,4 @@
-package pl.caseweek.pageobjects;
+package pl.caseweek.pageobjects.searchengines;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
+import pl.caseweek.pageobjects.SearchEngine;
 
-public class Goo extends LoadableComponent<Goo> {
+public class Goo extends LoadableComponent<Goo> implements SearchEngine{
 
-	WebDriver driver;
+	private WebDriver driver;
 
 	@FindBy(id = "searchtop")
 	private WebElement searchBox;

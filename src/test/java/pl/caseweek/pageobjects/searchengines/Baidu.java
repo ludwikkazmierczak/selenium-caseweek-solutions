@@ -1,4 +1,4 @@
-package pl.caseweek.pageobjects;
+package pl.caseweek.pageobjects.searchengines;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,13 +7,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 import pl.caseweek.data.Titles;
+import pl.caseweek.pageobjects.SearchEngine;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Baidu extends LoadableComponent<Baidu> {
-	WebDriver driver;
-
+public class Baidu extends LoadableComponent<Baidu> implements SearchEngine {
+	private WebDriver driver;
 
 	@FindBy(xpath="//input[@id='kw1']")
 	private WebElement searchBox;
@@ -23,8 +23,6 @@ public class Baidu extends LoadableComponent<Baidu> {
 
 	@FindBy(xpath="//div[contains(@class, 'result')]/h3/a")
 	private List<WebElement> searchHeadings;
-
-
 
 	public void search(String searchTerm) {
 		searchBox.sendKeys(searchTerm);

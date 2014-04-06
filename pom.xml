@@ -13,8 +13,7 @@
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<selenium.version>2.38.0</selenium.version>
 	</properties>
-	
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>

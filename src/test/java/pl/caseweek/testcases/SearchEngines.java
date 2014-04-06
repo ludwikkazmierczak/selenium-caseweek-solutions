@@ -5,12 +5,11 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import pl.caseweek.pageobjects.Baidu;
-import pl.caseweek.pageobjects.Goo;
+import pl.caseweek.pageobjects.searchengines.Baidu;
+import pl.caseweek.pageobjects.searchengines.Goo;
 import pl.caseweek.templates.TestTemplate;
 
 public class SearchEngines extends TestTemplate {
-
 
 	@Test
 	public void searchInBaidu() {
