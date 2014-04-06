@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SingleListPage {
+public class SingleListPage implements pl.caseweek.pageobjects.SingleListPage{
 	private WebDriver driver;
 
 	public Navigation mainMenu;
@@ -22,11 +22,10 @@ public class SingleListPage {
 		return new ListGeeksElement(driver, listItems.get(itemIndex));
 	}
 
-	public void changeOrder(WebElement first, WebElement second){
+	public void changeOrder(WebElement elementToDrag, WebElement dropArea){
 		Actions action = new Actions(driver);
-		action.clickAndHold(first).moveToElement(second).moveByOffset(0, 5).release().build().perform();
+		action.clickAndHold(elementToDrag).moveToElement(dropArea).moveByOffset(0, 5).release().build().perform();
 	}
-
 
 	public SingleListPage(WebDriver driver) {
 		this.driver = driver;
